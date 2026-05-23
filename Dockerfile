@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-alpine
 
 # Instal ekstensi sistem yang dibutuhkan Laravel
-RUN apk add --no-repeat build-base shadow supervisor nginx libpng-dev libjpeg-turbo-dev freetype-dev libzip-dev zip unzip git bash mysql-client mysql-dev
+RUN apk add --no-cache build-base shadow supervisor nginx libpng-dev libjpeg-turbo-dev freetype-dev libzip-dev zip unzip git bash mysql-client mysql-dev
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql zip bcmath opcache
