@@ -56,4 +56,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
         Route::post('/inventory/{item}/restock', [InventoryController::class, 'restock'])->name('inventory.restock');
     });
+    
+    // HAPUS ROUTE INI JIKA SUDAH SELESAI MIGRASI DI PRODUCTION!
+    Route::get('/jalankan-migrasi-gudang', function() {
+        try {
+            // Menjalankan php artisan migrate:fresh --seed via code
+            Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
+                '--force' => true, // Wajib di-force karena ini lingkungan production
+                '--seed' => true
+            ]);
+            
+            return "// SYSTEM_MESSAGE: Database Fainaya Motor berhasil dimigrasi dan di-seed!";
+        } catch (\Exception $e) {
+            return "// ERROR_MESSAGE: " . $e->getMessage();
+        }
+    });
 });
