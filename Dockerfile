@@ -53,4 +53,4 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 EXPOSE 80
 
-CMD php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=80
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
