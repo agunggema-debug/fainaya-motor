@@ -51,3 +51,20 @@ Proses perancangan sistem terintegrasi ini diselesaikan melalui beberapa tahapan
 ```bash
    git clone [https://github.com/USERNAME_ANDA/fainaya-motor.git](https://github.com/USERNAME_ANDA/fainaya-motor.git)
    cd fainaya-motor
+```
+---
+## 💻Tampilan Login
+
+<img width="1094" height="874" alt="image" src="https://github.com/user-attachments/assets/e5b52092-2025-46c6-a029-3ff45905395e" />
+
+## 💻Tampilan Dashboard
+
+<img width="1445" height="1079" alt="image" src="https://github.com/user-attachments/assets/1f94f492-337c-4187-84bf-ce881dbbc4d7" />
+
+## 💻Tampilan Input Customer
+
+<img width="983" height="1069" alt="image" src="https://github.com/user-attachments/assets/14ed5a71-b5a5-42a6-97ab-7fcf0a09cb18" />
+
+## 💻Tampilan Cetak invoice
+
+<img width="1044" height="982" alt="image" src="https://github.com/user-attachments/assets/4274bf7f-0ad6-4ac6-9624-ab5faee86e25" />
