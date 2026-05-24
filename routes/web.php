@@ -60,15 +60,28 @@ Route::middleware(['auth'])->group(function () {
     // HAPUS ROUTE INI JIKA SUDAH SELESAI MIGRASI DI PRODUCTION!
     Route::get('/jalankan-migrasi-gudang', function() {
         try {
-            // Menjalankan php artisan migrate:fresh --seed via code
-            Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
-                '--force' => true, // Wajib di-force karena ini lingkungan production
+            // Mengabaikan mode production untuk memunculkan detail error
+            ob_start();
+            
+            $status = Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
+                '--force' => true,
                 '--seed' => true
             ]);
             
-            return "// SYSTEM_MESSAGE: Database Fainaya Motor berhasil dimigrasi dan di-seed!";
+            $output = Illuminate\Support\Facades\Artisan::output();
+            ob_end_clean();
+            
+            return response()->json([
+                'status' => 'Success',
+                'output' => $output
+            ]);
         } catch (\Exception $e) {
-            return "// ERROR_MESSAGE: " . $e->getMessage();
+            return response()->json([
+                'status' => 'Failed/Error 500',
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ], 500);
         }
     });
 });
